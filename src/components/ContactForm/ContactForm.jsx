@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
-import css from './ContactForm.module.css'
+import css from './ContactForm.module.css';
+import PropTypes from 'prop-types';
 
-function ContactForm({ onAddContact }) {
+export default function ContactForm({ onAddContact }) {
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -33,7 +34,7 @@ function ContactForm({ onAddContact }) {
         />
       </label>
       <label className={css.label}>
-      <span className={css.labelName}> Number</span>
+        <span className={css.labelName}> Number</span>
         <input
           type="tel"
           name="number"
@@ -43,9 +44,13 @@ function ContactForm({ onAddContact }) {
           required
         />
       </label>
-      <button className={css.addBtn} type="submit">Add contact</button>
+      <button className={css.addBtn} type="submit">
+        Add contact
+      </button>
     </form>
   );
 }
 
-export default ContactForm;
+ContactForm.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
+};
